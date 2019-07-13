@@ -1,3 +1,0 @@
-learn git with deepin-shell.
-Add wrote by jupyter-notebook.
-教程来自廖雪峰老师的git教程.
