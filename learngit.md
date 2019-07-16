@@ -173,4 +173,22 @@
 如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream-to <branch-name> origin/<branch-name>。
 
 这就是多人协作的工作模式，一旦熟悉了，就非常简单。
-        
+
+    git remote (-v)    查看远程库信息
+#### 推送分支
+    git push origin <分支名称>
+    主分支开发分支 (master dev)必须远程，其他不必远程推送 feature也可推送
+#### 抓取分支
+    git clone ...
+    默认只有master，创建dev,...
+    本地： git checkout -b dev origin/dev 创建和远程一致的dev分支。
+    ...
+    修改
+    ...
+    推送
+    ...
+    如果冲突：
+    git pull 将远程的分支抓取下来，合并，解决冲突后 git push.
+    如果pull失败，可能是没有指定本地dev与远程origin/dev的链接：
+    git branch --set-upstrram-to=origin/dev dev
+    
