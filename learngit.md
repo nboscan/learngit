@@ -192,3 +192,34 @@
     如果pull失败，可能是没有指定本地dev与远程origin/dev的链接：
     git branch --set-upstrram-to=origin/dev dev
     
+# 标签管理
+tag 
+## 创建标签
+    先切换到需要打标签的分支上
+    git branch 查看
+    git checkout <mastername> 
+    git tag v1.0  打一个新标签
+    git tag       查看所有标签
+    默认标签打在最新的commit上。
+
+    将标签打在特定的commit上：
+    git log --pretty=oneline --abbrev-commit 列出所有的commit
+    git tag v0.9 xxxxx(对应的commit id)
+## 操作标签
+    删除标签:
+    git tag -d <tagname>
+    将标签推送到远程库:
+    git push origin <tagname
+    一次推送所有未推送到远程库的标签:
+    git push origin --tags
+    删除远程库标签:
+    git tag -d <tagname> 先删除本地标签
+    git push origin :refs/tags/<tag>
+# 使用github
+参与别人的开源项目
+    进入开源项目主页,点"Fork"克隆的自己的账号下
+    然后从自己的账号下clone:   git clone git@github.com:nboscan/<项目名称>.git
+    ...
+    ...
+    ...
+    如果想别人接受你的修改,可以在GitHub上发起一个pull request.
