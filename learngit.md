@@ -223,3 +223,19 @@ tag
     ...
     ...
     如果想别人接受你的修改,可以在GitHub上发起一个pull request.
+
+# 使用码云
+git remote -v  查看远程库
+git remote rm <> 删除远程库
+ssh公钥存放的文件夹：~/.ssh/id_rsa.pub      cat全部内容复制。
+git remote add github git@github.com:nboscan/.... .git
+git remote add gitee git@gitee.com:nboscan/... .git
+git push github/gitee master
+
+# 自定义Git
+    git config --global color.ui true
+    ...
+    ...
+    ...
+# 忽略特殊文件
+git工作目录下 .gitignore 文件

@@ -1,5 +1,5 @@
-Git is a distributed version control system.
-Git is free software distributed under the GPL.
-dev第二次更新
-测试合并分支Fast forward模式
-demo第二次
+Learn Git 
+这是一篇Git学习笔记。
+感谢廖雪峰老师的无私奉献。
+也希望大家都学有所得。
+感恩！感恩！感恩！

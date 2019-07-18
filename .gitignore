@@ -1,0 +1,10 @@
+# vnot
+.gitignore.swp
+*.vswp
+# Python:
+*.py[cod]
+*.so
+*.egg
+*.egg-info
+dist
+build
