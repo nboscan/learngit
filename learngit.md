@@ -192,7 +192,7 @@
     如果pull失败，可能是没有指定本地dev与远程origin/dev的链接：
     git branch --set-upstrram-to=origin/dev dev
     
-# 标签管理
+# 12.标签管理
 tag 
 ## 创建标签
     先切换到需要打标签的分支上
@@ -215,7 +215,7 @@ tag
     删除远程库标签:
     git tag -d <tagname> 先删除本地标签
     git push origin :refs/tags/<tag>
-# 使用github
+## 使用github
 参与别人的开源项目
     进入开源项目主页,点"Fork"克隆的自己的账号下
     然后从自己的账号下clone:   git clone git@github.com:nboscan/<项目名称>.git
@@ -224,7 +224,7 @@ tag
     ...
     如果想别人接受你的修改,可以在GitHub上发起一个pull request.
 
-# 使用码云
+## 使用码云
 git remote -v  查看远程库
 git remote rm <> 删除远程库
 ssh公钥存放的文件夹：~/.ssh/id_rsa.pub      cat全部内容复制。
@@ -232,10 +232,52 @@ git remote add github git@github.com:nboscan/.... .git
 git remote add gitee git@gitee.com:nboscan/... .git
 git push github/gitee master
 
-# 自定义Git
+# 13.自定义Git
     git config --global color.ui true
     ...
     ...
     ...
-# 忽略特殊文件
+## 忽略特殊文件
 git工作目录下 .gitignore 文件
+被.gitignore忽略的文件添加到Git 加 -f:  git add -f <filename>
+    .gitignore文件要放在版本库里，并做版本管理。
+## 配置别名
+    git config --global alias.st status 用st表示status.
+    --global 是全局参数，加上针对当前用户起作用，不加只针对当前仓库起作用。
+    每个仓库的配置文件放在 .git/config
+    用户的git配置文件放在用户主目录的.gitconfig中
+    [alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	cm = commit -m
+	unstage = reset HEAD
+	lastrepo = --hard HEAD^
+	repo = --hard HEAD
+	co = checkout
+	st = status
+## 搭建Git服务器
+    1.安装git:
+	sudo apt-get install git
+    2.创建一个git用户，用来运行git服务：
+	sudo adduser git
+    3.创建证书登录：
+	收集所有需要登录的用户的公钥:id_rsa.pub ,把所有公钥导入到/home/git/.ssh/authorized_keys文件里，一行一个。
+    4.初始化Git仓库：
+	选定一个目录
+	sudo git init --bare sample.git
+	Git就会创建一个裸仓库，裸仓库没有工作区，只为共享。所有不让用户直接登录到服务器上去改工作区，Git仓库通常以.git结尾。然后，把owner改为git:
+	sudo chown -R git:git sample.git
+    5.禁用shell登录：
+	出于安全考虑，第二步创建的git用户不允许登录shell,可以通过编辑/etc/passwd文件完成：
+	git:x:1001:1001:,,,:/home/git:/bin/bash
+	改为：
+	git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
+	这样，git用户可以正常通过ssh使用git，但无法登录shell(一登录就退出)
+    6.克隆远程仓库：
+	现在，可以通过git clone克隆远程仓库，在各种电脑上运行了
+	...
+	推送
+	...
+管理公钥
+	Gitosis
+管理权限
+	Gitolite
